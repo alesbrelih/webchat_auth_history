@@ -1,0 +1,53 @@
+{
+  "name": "webchat_auth",
+  "version": "1.0.0",
+  "description": "Webchat with public channels,custom channels, private channels. Also using auth and chat history loging.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alesbrelih/webchat_auth_history.git"
+  },
+  "keywords": [
+    "chat",
+    "sockets",
+    "auth",
+    "loging"
+  ],
+  "author": "aleš brelih",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/alesbrelih/webchat_auth_history/issues"
+  },
+  "homepage": "https://github.com/alesbrelih/webchat_auth_history#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.6",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.0",
+    "path": "^0.12.7",
+    "socket.io": "^1.5.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
