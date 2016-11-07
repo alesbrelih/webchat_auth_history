@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="webChat">
     <head>
         <title>WebChat</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body ng-app="web_chat">
-        <h2>Hi from express</h2>
-        <div class="main" ng-controller="MainCtrl">
-            {{title}}
+    <body>
+        <div class="angular-main" ui-view>
+
         </div>
         <script src="dist/scripts/dependencies.min.js"></script>
         <script src="dist/scripts/app.js"></script>

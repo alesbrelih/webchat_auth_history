@@ -1,9 +1,30 @@
 (function(window,angular){
 
 
-    angular.module("web_chat",[]).controller("MainCtrl",["$scope",function($scope){
-        $scope.title = "Waw browserify RELOADED";
-        $scope.title2 = "wawawaw";
-    }]);
+    //////////////////////////////////////
+    // ------- main angular module -------
+    //////////////////////////////////////
+
+    const app = angular.module("webChat",["ui.router"]);
+
+    /////////////////////////////////////
+    // ------- state config module ------
+    /////////////////////////////////////
+
+    const states = require("./config/angular-routes.js");
+
+
+    /////////////////////////////////////
+    // ----- Components -----------------
+    ////////////////////////////////////
+
+    const components = require("./components/components");
+
+    //register states
+    states(app);
+
+    //register components
+    components(app);
+
 
 })(window,window.angular);

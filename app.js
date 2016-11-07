@@ -21,6 +21,9 @@ app.use(body_parser.json());
 ///////////////////////////////////////////
 
 app.use(express.static(path.join(__dirname,"public")));
+app.use("/auth",express.static(path.join(__dirname,"client/app/components/auth")));
+app.use("/login",express.static(path.join(__dirname,"client/app/components/auth/login")));
+app.use("/register",express.static(path.join(__dirname,"client/app/components/auth/register")));
 
 
 ////////////////////////////////////

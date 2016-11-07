@@ -13,6 +13,7 @@ const scss = require("gulp-sass"); //sass compiler
 const cleanCss = require("gulp-clean-css"); //minify css
 const autoPrefixer = require("gulp-autoprefixer"); //css prefixer
 const browserSync = require("browser-sync");
+const karma = require("karma").Server;
 
 ///////////////////////////////////////////////
 
@@ -116,10 +117,24 @@ gulp.task("default",["browserify","scss"],function(){
     // initialize browser sync
     browserSync.init({
         proxy: "http://localhost:8001",
+        files: ["views/Index.html","app/**/*.html"]
     });
 
     //watch files and trigger gulp tasks
     gulp.watch(scssFiles,["scss-watch"]);
     gulp.watch(clientScripts,["browserify-watch"]);
 
+});
+
+
+
+/////////////////////////////////////////
+// ----- Unit test--------------------
+//////////////////////////////////////
+
+gulp.task("karma",function(done){
+    new karma({
+    configFile: __dirname + '/client/app/tests/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
