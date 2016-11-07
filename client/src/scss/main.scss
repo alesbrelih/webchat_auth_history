@@ -1,13 +1,156 @@
 @import "./base/_reset.scss";
+@import "./base/_variables.scss";
+@import "./base/_fonts.scss";
 
-body{
-    color:red;
-    display:flex;
-    h1{
-        color:blue;
-        font-size:1.2em;
-        border:1px solid black;
-        padding:10px;
-        margin:30px;
-    }
+//takes full screen as container
+.angular-main{
+    width:100vw;
+    min-height: 100vh;
 }
+
+//auth view wrapper for login/register view
+auth-view{
+    //bg color
+    background-color:$blue-default;
+  
+    //dynamic size content - centered
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    //font family
+    font-family: 'Raleway', sans-serif;
+
+    //takes full width
+    width:100vw;
+    height:100vh;
+
+    
+    
+}
+//styles for register/login view
+.login-wrapper,.register-wrapper{
+
+        //min size for testing
+        min-width:300px;
+        min-height:300px;
+
+        //default margin
+        margin:10px;
+        
+        //bg color
+        background-color:darken($gray-light,5%);
+        
+        //border styling
+        //using boxshadow for multiple 
+        //borders
+        border-radius:10px;
+        box-shadow:0px 0px 0px 2px lighten($blue-default,10%),
+        0px 0px 0px 4px lighten($blue-default,15%);
+        
+        //display
+        display:flex;
+        flex-direction:column;
+        
+        //header title styles
+        .header{
+            //positioning
+            margin:60px 10px 40px 10px;
+
+            //center aligned
+            text-align:center;
+
+            //font styles
+            font-size:2em;
+            color:$blue-default;
+            font-weight:bolder;
+        }
+        //input styles
+        input{
+            //margins / paddings
+            margin-left:10px;
+            margin-right:10px;
+            border-radius:5px;
+            padding:12px;
+            margin-bottom:5px;
+
+            //no default border/outline
+            border:none;
+            outline:none;
+            
+            //font family
+            font-family: 'Raleway', sans-serif !important;
+            
+            //text input border
+            &[type="text"]{
+                border:2px groove $blue-default;
+                
+            }
+            //button default styles
+            &[type="button"]{
+
+                //font styles
+                color:white;
+                //box-shadow:0px 0px 0px 2px lighten($blue-default,10%);     
+                font-size:1.05em;
+
+
+                cursor:pointer;
+                
+                //extra styling for special occacions
+                &.first{
+                margin-top:5px;
+                }
+                &.only{
+                margin:20px 10px;
+                }
+
+                //blue button styles
+                &.blue{
+                    background-color:$blue-default;
+                    border:2px solid lighten($blue-default,10%);
+                    &:hover{
+                    background-color:lighten($blue-default,10%);
+                    }
+                    &:active{
+                        background-color:darken($blue-default,10%);
+                    }
+                }
+                //red button styles
+                &.red{
+                    background-color:$orange-default;
+                    border:2px solid lighten($orange-default,10%);
+                    &:hover{
+                    background-color:lighten($orange-default,10%);
+                    }
+                    &:active{
+                        background-color:darken($orange-default,2%);
+                    }
+                }
+            }
+        }
+        
+
+        .text-area{
+
+            //margin / padding
+            margin:15px;
+            padding:5px;
+            padding-left:10px;
+
+            //link inside styles
+            a{
+                //font styles
+                text-decoration:none;
+                font-size:0.9em;
+                color:$blue-default;
+                font-weight:bold;
+
+                //on hover effect
+                &:hover{
+                color:darken($blue-default,10%);
+                }
+            }
+            
+        }
+    }
