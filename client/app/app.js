@@ -1,11 +1,9 @@
-(function(window){
+(function(window,angular){
 
-    const angular = require("angular");
-    const router = require("angular-ui-router");
 
     angular.module("web_chat",[]).controller("MainCtrl",["$scope",function($scope){
-        $scope.title = "Waw browserify";
+        $scope.title = "Waw browserify RELOADED";
         $scope.title2 = "wawawaw";
     }]);
 
-})(window);
+})(window,window.angular);
