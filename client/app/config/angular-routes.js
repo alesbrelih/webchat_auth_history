@@ -1,7 +1,7 @@
 //function to be exported
 //angular will be reference to window.angular module
 function angularStateConfig(app){
-
+    
     //configure states function
     function stateConfig($stateProvider,$urlRouterProvider){
 

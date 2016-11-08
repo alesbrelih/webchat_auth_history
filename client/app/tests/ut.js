@@ -12,3 +12,11 @@ require("../app");
 
 // ------- statetesting --------
 require("./states/states.tests")(angular);
+
+// Service testing
+
+//auth service
+require("./services/auth/auth.tests")(angular);
+
+//jwt service
+require("./services/jwt/jwt.tests")(angular);
