@@ -14,6 +14,14 @@ function useComponents(app){
     //registers register component
     const registerComponent = require("./auth/register/register.component");
     registerComponent(app);
+
+    //toaster container
+    const toasterContainerComponent = require("./toaster/toaster.component");
+    toasterContainerComponent(app);
+
+    //toaster msg
+    const toasterMsgComponent = require("./toaster/toaster-message/toaster.message");
+    toasterMsgComponent(app);
 }
 
 //exporting registering function for use in app.js

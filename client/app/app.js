@@ -5,7 +5,7 @@
     // ------- main angular module -------
     //////////////////////////////////////
 
-    const app = angular.module("webChat",["ui.router"]);
+    const app = angular.module("webChat",["ui.router","ngAnimate"]);
 
     /////////////////////////////////////
     // ------- state config module ------

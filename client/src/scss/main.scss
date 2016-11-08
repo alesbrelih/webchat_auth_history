@@ -2,6 +2,8 @@
 @import "./base/_variables.scss";
 @import "./base/_fonts.scss";
 
+@import "./toasters/_toasters.scss";
+
 //takes full screen as container
 .angular-main{
     width:100vw;
@@ -154,3 +156,5 @@ auth-view{
             
         }
     }
+
+   

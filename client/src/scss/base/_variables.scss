@@ -1,3 +1,16 @@
+//////////////////////////////
+// ---- Color variables -----
+/////////////////////////////
+
+//blue
 $blue-default:#1e88e5;
+$blue-light:lighten($blue-default,10%);
+
+//gray
 $gray-light:#eee;
+
+//orange
 $orange-default:#ff7043;
+
+//green
+$green-default:#64dd17;

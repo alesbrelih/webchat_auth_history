@@ -2,7 +2,7 @@
 // ------ Register login component ----------
 //////////////////////////////////////////////
 
-function loginController($http){
+function loginController($http,ToasterService){
     var vm = this;
 
     vm.Test = function(){
@@ -11,8 +11,13 @@ function loginController($http){
         });
 
     };
+    vm.newToaster = function(){
+        ToasterService.Add("warning","warning");
+        ToasterService.Add("alert","alert");
+        ToasterService.Add("success","success");
+    };
 }
-loginController.$inject = ["$http"];
+loginController.$inject = ["$http","ToasterService"];
 
 function loginComponent(app){
     app.component("loginView",{

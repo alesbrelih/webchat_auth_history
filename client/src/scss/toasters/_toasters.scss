@@ -1,0 +1,136 @@
+//toaster wrapper
+ab-toasters{
+  //fixed bottom right
+  position: fixed;
+  bottom:20px;
+  right:20px;
+
+  //display items centered and in column
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+
+}
+
+//toaster message animation on enter/leave
+ab-toast-msg{
+  &.ng-animate{
+    &.ng-enter{
+      animation: 1.5s fadeInToast;  
+    }
+    &.ng-leave{
+      animation: 1.5s fadeOutToast;
+    }
+  }
+  
+}
+
+.toaster-message{
+    
+    //center content
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    //margin between toasters
+    margin:20px;
+    
+    //border radius
+    border-radius:3px;
+    
+    //colors - fonts
+    background-color:#999;
+    color:white;
+
+    font-size:1.2em;
+    
+    //max width
+    max-width:300px;
+    
+    //nicer border using box shadow
+    box-shadow:0px 0px 0px 2px white,0px 0px 0px 4px #999;
+    
+    transition:all 150ms ease;
+
+
+    
+
+    
+    //changes on hover
+    &:hover{
+      cursor:pointer;
+      transform:translateY(-10px);
+    }
+    
+    //toaster type icon sizing
+    i.fa-exclamation,i.fa-bell,
+    i.fa-check,i.fa-pencil{
+      padding-top:30px;
+      padding-bottom:30px;
+      width:100px;
+      font-size:1.8em;
+      text-align:center;
+    }
+    i.fa-exclamation{
+      font-size:2.5em;
+    }
+    
+    //text padding
+    .toaster-text{
+      padding:20px 20px 20px 0px;
+      font-size:1.1em;
+    }
+    
+    //x placement
+    i.fa-times{
+      align-self:flex-start;
+      padding-top:10px;
+      padding-right:10px;
+    }
+    
+    //different types of toasters
+    &.warning{
+      background-color:$orange-default;
+      box-shadow:0px 0px 0px 2px white,0px 0px 0px 4px $orange-default;
+    }
+    &.success{
+      background-color:$green-default;
+      box-shadow:0px 0px 0px 2px white,0px 0px 0px 4px $green-default;
+    }
+    &.alert{
+      background-color:$blue-light;
+      box-shadow:0px 0px 0px 2px white,0px 0px 0px 4px $blue-light; 
+    }
+}
+
+//media
+@media(max-width:500px){
+  ab-toasters{
+    left:30px;
+    bottom: 30px;
+    right:30px;
+    font-size:0.8em;
+    .toaster-message{
+      margin:0px;
+    }
+  }
+  
+}
+
+//animation for toasters to enter/leave
+@keyframes fadeInToast{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@keyframes fadeOutToast{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}

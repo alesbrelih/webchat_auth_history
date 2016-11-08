@@ -4,6 +4,8 @@ function authComponent(app){
         templateUrl:"/auth/auth.component.html"
     });
 
+    
+
 }
 
 module.exports = authComponent;

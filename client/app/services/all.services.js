@@ -16,6 +16,9 @@ function registerAllServices(app){
     const httpInterceptService = require("./http-interceptor/http.interceptor.service");
     httpInterceptService(app);
 
+    //toaster service
+    const toasterService = require("./toasters/tosters.service");
+    toasterService(app);
 }
 
 module.exports = registerAllServices;
