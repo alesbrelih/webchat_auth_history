@@ -4,7 +4,7 @@
 
 function authorizeRouteFunction(app){
 
-    function authorizeRoute($rootScope,AuthService,$state){
+    function authorizeRoute($rootScope,AuthService,$state,ToasterService){
 
         //on change state check if user is logged and redirect to login if it isnt
         $rootScope.$on("$stateChangeStart",function(event,toState,toParams,fromState,fromParams,options){
@@ -14,11 +14,31 @@ function authorizeRouteFunction(app){
 
                 $state.go("auth.login"); //go to login
             }
+            if(toState.name.startsWith("auth")  && AuthService.IsAuthorized()){
+                //if token exists prevent default state change
+                event.preventDefault();
+
+                //save destination
+                let to = toState.name;
+
+                //validate token promise, on succes end, if validation fails go to auth page
+                AuthService.ValidateJwt().then(()=>
+                    ToasterService.Add("alert","You are already logged in.")
+                ,()=>
+                    $state.go(to)
+                );
+
+            }
+        });
+
+        //on authorized error return user to login page
+        $rootScope.$on("unauthorized",()=>{
+            $state.go("auth.login");
         });
         
         
     }
-    authorizeRoute.$inject=["$rootScope","AuthService","$state"];
+    authorizeRoute.$inject=["$rootScope","AuthService","$state","ToasterService"];
 
     //set this on ap run
     app.run(authorizeRoute);

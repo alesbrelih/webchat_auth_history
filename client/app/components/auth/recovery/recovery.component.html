@@ -1,0 +1,12 @@
+<div class="recover-wrapper">
+    <div class="header">Recover Account</div>
+    <form name="RecoveryForm" novalidate ng-submit="vm.recoverAccount()">
+      <input type="email" placeholder="Email" required ng-model="vm.email"/>
+      <input id="submit-recover" ng-disabled="RecoveryForm.$invalid" type="submit" hidden/>
+    </form>
+    <div class="text-area">
+      <span class="text">Please type the email You used to log in.</span>
+      
+    </div>
+    <label for="submit-recover" ng-class="{disabled:RecoveryForm.$invalid}" class="submit blue recover">Recover Account</label>
+</div>

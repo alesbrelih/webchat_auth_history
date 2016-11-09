@@ -4,7 +4,7 @@
 
 function httpInterceptorFunction(app){
 
-    function httpInterceptorController($q,JwtService){
+    function httpInterceptorController($q,JwtService,$rootScope){
 
         return {
             //add token to header on every request
@@ -22,7 +22,7 @@ function httpInterceptorFunction(app){
             "responseError":function(err){
                 if(err.status==401){
                     JwtService.RemoveToken();
-                    console.log("error 401");
+                    $rootScope.$broadcast("unauthorized");
                 }
                 return $q.reject(err);
             }
@@ -31,7 +31,7 @@ function httpInterceptorFunction(app){
 
     }
 
-    httpInterceptorController.$inject = ["$q","JwtService"];
+    httpInterceptorController.$inject = ["$q","JwtService","$rootScope"];
 
     app.factory("HttpInterceptor",httpInterceptorController);
 

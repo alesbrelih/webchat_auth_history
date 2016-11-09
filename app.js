@@ -8,12 +8,15 @@ const ejs = require("ejs");
 const passport = require("passport");
 const passport_jwt = require("./config/jwt.strategy");
 const dbConnect = require("./db/db.connect");
+const jwt = require("jsonwebtoken");
+const props = require("./config/properties");
+
 
 /////////////////////////////////
 // ---- route models ----------
 ////////////////////////////////
 
-const userRouter = require("./routes/user.routes")(express);
+const userRouter = require("./routes/user.routes")(express,passport);
 
 //////////////////////////////////
 //----bodyparser middleware---- /
@@ -44,6 +47,10 @@ app.use("/auth",express.static(path.join(__dirname,"client/app/components/auth")
 app.use("/login",express.static(path.join(__dirname,"client/app/components/auth/login")));
 app.use("/register",express.static(path.join(__dirname,"client/app/components/auth/register")));
 app.use("/toaster",express.static(path.join(__dirname,"client/app/components/toaster")));
+app.use("/recovery",express.static(path.join(__dirname,"client/app/components/auth/recovery")));
+
+
+
 
 
 ////////////////////////////////////
@@ -69,6 +76,20 @@ app.get("/",(req,res)=>{
 app.get("/restricted",passport.authenticate("jwt",{session:false}),(req,res)=>{
     res.send("restricted area");
 });
+
+//for forget password
+app.get("/validate/:jwt",(req,res)=>{
+    var jwt_body = req.params.jwt;
+    jwt.verify(jwt_body,props.secret,function(err,decoded){
+        if(err){
+            res.status(401).send("Unauthorized");
+        }
+        else{
+            res.redirect("/#/recover/"+decoded);
+        }
+    });
+});
+
 
 
 //start server

@@ -2,11 +2,15 @@
     <div class="header">
     Login
     </div>
-    <input type="text" placeholder="Username" />
-    <input type="text" placeholder="Password"/>
+    <form novalidate name="LoginForm" ng-submit="vm.loginUser()">
+        <input type="email" required placeholder="Username" ng-model="vm.user.email" />
+        <input type="password" required placeholder="Password" ng-model="vm.user.password"/> 
+        <input id="submit-login" ng-disabled="LoginForm.$invalid" type="submit" hidden>
+    </form>
+    
     <div class="text-area">
     <a href="#">Forgot password?</a>
     </div>
-    <input type="button" class="blue first" Value="Login" ng-click="vm.Test()"/>
-    <input id="to-register" type="button" class="red" Value="Register" ng-click="vm.newToaster()" />
+    <label for="submit-login" class="submit blue first"  ng-class="{disabled:LoginForm.$invalid}">Login</label>
+    <label id="to-register" type="button" class="red" Value="Register" ng-click="vm.newToaster()">Register</label>
 </div>

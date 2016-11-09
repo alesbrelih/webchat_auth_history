@@ -22,6 +22,10 @@ function angularStateConfig(app){
             .state("auth.register",{
                 url:"/register",
                 template:"<register-view></register-view>"
+            })
+            .state("auth.recovery",{
+                url:"/recovery",
+                template:"<recovery-view></recovery-view>"
             });
             
         $urlRouterProvider.otherwise("/");

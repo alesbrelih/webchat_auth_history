@@ -15,6 +15,10 @@ function useComponents(app){
     const registerComponent = require("./auth/register/register.component");
     registerComponent(app);
 
+    //recover account component
+    const recoverComponent = require("./auth/recovery/recovery.component");
+    recoverComponent(app);
+
     //toaster container
     const toasterContainerComponent = require("./toaster/toaster.component");
     toasterContainerComponent(app);

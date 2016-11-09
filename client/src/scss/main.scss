@@ -27,11 +27,16 @@ auth-view{
     width:100vw;
     height:100vh;
 
+    form{
+        display:flex;
+        flex-direction:column;
+    }
+
     
     
 }
 //styles for register/login view
-.login-wrapper,.register-wrapper{
+.login-wrapper,.register-wrapper,.recover-wrapper{
 
         //min size for testing
         min-width:300px;
@@ -53,6 +58,8 @@ auth-view{
         //display
         display:flex;
         flex-direction:column;
+
+        
         
         //header title styles
         .header{
@@ -68,13 +75,14 @@ auth-view{
             font-weight:bolder;
         }
         //input styles
-        input{
+        input,label{
             //margins / paddings
             margin-left:10px;
             margin-right:10px;
             border-radius:5px;
             padding:12px;
             margin-bottom:5px;
+            text-align: center;
 
             //no default border/outline
             border:none;
@@ -84,12 +92,17 @@ auth-view{
             font-family: 'Raleway', sans-serif !important;
             
             //text input border
-            &[type="text"]{
-                border:2px groove $blue-default;
+            &[type="text"],&[type="password"],&[type="email"]{
+                border:2px solid lighten($blue-default,10%);
+                &:not(:focus).ng-not-empty.ng-touched.ng-invalid{
+                    background-color:$red-light;
+                    color:white; 
+                    border-color:$red-default;
+                }
                 
             }
             //button default styles
-            &[type="button"]{
+            &[type="button"],&.submit{
 
                 //font styles
                 color:white;
@@ -129,6 +142,11 @@ auth-view{
                         background-color:darken($orange-default,2%);
                     }
                 }
+                &.disabled{
+                    background-color:$gray-btn-disabled;
+                    border-color:$gray-btn-disabled-border;
+                    pointer-events: none;
+                }
             }
         }
         
@@ -152,6 +170,11 @@ auth-view{
                 &:hover{
                 color:darken($blue-default,10%);
                 }
+            }
+            .text{
+                color:$blue-default;
+                font-weight:bold;
+                font-size:0.9em;
             }
             
         }

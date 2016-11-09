@@ -11,7 +11,9 @@ function jwtServiceFunction(app){
 
         //private functions that get and set token
         function getToken(){
+           
             return $window.localStorage.getItem(tokenStorageName);
+
         }
         function setToken(value){
             $window.localStorage.setItem(tokenStorageName,value);
@@ -48,7 +50,7 @@ function jwtServiceFunction(app){
         };
 
         jwtFactory.GetToken = ()=>{
-            getToken();
+            return getToken();
         };
 
         //return singleton

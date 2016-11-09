@@ -2,22 +2,18 @@
 // ------ Register login component ----------
 //////////////////////////////////////////////
 
-function loginController($http,ToasterService){
+function loginController($http,AuthService){
     var vm = this;
-
-    vm.Test = function(){
-        $http.get("http://localhost:8001/restricted").then(function(ok){
-            console.log(ok);
-        });
-
+    vm.user={
+        email:"",
+        password:""
     };
-    vm.newToaster = function(){
-        ToasterService.Add("warning","warning");
-        ToasterService.Add("alert","alert");
-        ToasterService.Add("success","success");
+    vm.loginUser = ()=>{
+        AuthService.Login(vm.user);
     };
+
 }
-loginController.$inject = ["$http","ToasterService"];
+loginController.$inject = ["$http","AuthService"];
 
 function loginComponent(app){
     app.component("loginView",{

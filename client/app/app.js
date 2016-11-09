@@ -48,6 +48,13 @@
     //register all services
     services(app);
 
+    ////////////////////////////////////
+    // ------ Directives -------------
+    /////////////////////////////////////
+
+    const directives = require("./directives/directives");
+    directives(app);
+
 
 
 

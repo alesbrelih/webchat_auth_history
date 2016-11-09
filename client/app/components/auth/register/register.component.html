@@ -2,12 +2,16 @@
     <div class="header">
     Register
     </div>
-    <input type="text" placeholder="Username" />
-    <input type="text" placeholder="Password"/>
-    <input type="text" placeholder="Confirm Password"/>
+    <form novalidate name="RegisterForm" ng-submit="vm.registerUser()">
+        <input type="email" placeholder="Email" required ng-model="vm.user.email" />
+        <input type="password" placeholder="Password" required ng-model="vm.user.password" />
+        <input type="password" placeholder="Confirm Password" required ng-model="vm.pwdConfirm" ab-pwd-match="vm.user.password"/>
+        <input id="register-btn" type="submit" hidden ng-disabled="RegisterForm.$invalid">
+    </form>
+    
     <div class="text-area">
-    <a href="#" id="to-login">Back to Login</a>
+    <a ui-sref="auth.login">Back to Login</a>
     </div>
-    <input type="button" class="blue only" Value="Register" />
+    <label for="register-btn" class="submit blue only" ng-class="{disabled:RegisterForm.$invalid}"> Register </label>
     
 </div>
