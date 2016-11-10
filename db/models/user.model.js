@@ -47,13 +47,13 @@ User.methods.verifyPassword = function(password){
 };
 
 //generate jwt
-User.methods.generateJwt = function(){
+User.methods.generateJwt = function(recoverAcc){
     var token = jwt.sign({
         _id:this._id //only data passing in jwt is id
     },
     props.secret,
     {
-        expiresIn:"7d"
+        expiresIn:recoverAcc?"5m":"7d" //if its for recover mail its valid just 5 mins
     });
     return token;
 };

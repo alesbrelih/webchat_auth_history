@@ -3,12 +3,13 @@
 /////////////////////////////////////
 
 // needed modules for users router
-const User = require("./../db/models/user.model");
+var User = require("./../db/models/user.model");
+var sendMail = require("../config/nodemailer/nodemailer");
 
 function usersApiRouter(express,passport){
 
     //create router using referenced express
-    const router = express.Router();
+    var router = express.Router();
 
     // API/USERS/LOGIN - POST
     router.post("/login",function(req,res){
@@ -89,8 +90,6 @@ function usersApiRouter(express,passport){
 
     //route to recover password
     router.post("/recover",function(req,res){
-
-        console.log(req.body);
         var email = req.body.email;
 
         User.findOne({email:email},function(err,user){
@@ -100,8 +99,17 @@ function usersApiRouter(express,passport){
             }
             else{
                 if(user){
-                    //user was found
-                    res.status(200).send("Email sent.");
+                    
+                    sendMail(user.email,user.generateJwt(true),function(err,success){
+                        if(err){
+                            res.status(400).send(err.response);
+                        }
+                        else{
+                            //user was found
+                            res.status(200).send("Email sent."+success.response);
+                        }
+                    });
+                    
                 }
                 else{
                     //user wasnt foundr
@@ -111,7 +119,7 @@ function usersApiRouter(express,passport){
         });
 
     });
-    
+
     //return router
     return router;
 }
