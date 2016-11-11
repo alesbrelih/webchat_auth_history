@@ -27,9 +27,29 @@ function angularStateConfig(app){
                 url:"/recovery",
                 template:"<recovery-view></recovery-view>"
             })
+            //main wrapper for main content
             .state("main",{
+                abstract:true,
                 url:"/main",
                 template:"<ab-main-view></ab-main-view>"
+            })
+            //profile states
+            .state("main.profile",{
+                //abstract:true,
+                url:"/profile",
+                template:"<ab-profile></ab-profile>"
+            })
+            .state("main.profile.view",{
+                url:"/",
+                template:"<ab-profile-view></ab-profile-view>"
+            })
+            .state("main.profile.edit",{
+                url:"/edit",
+                template:"<ab-profile-edit></ab-profile-edit>"
+            })
+            .state("main.profile.pwd",{
+                url:"/password",
+                template:"<ab-profile-pwd></ab-profile-pwd>"
             });
             
         $urlRouterProvider.otherwise("/");

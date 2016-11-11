@@ -4,14 +4,15 @@
 
 function authServiceFunction(app){
 
-    function authServiceController($http,JwtService,$state,ToasterService){
+    function authServiceController($http,JwtService,$state,ToasterService,AppConfig){
 
+        var url = AppConfig.url;
         //returned singleton
         let authFactory = {};
 
         //login function
         authFactory.Login=(user)=>{
-            $http.post("http://localhost:8001/api/users/login",user)
+            $http.post(`${url}/api/users/login`,user)
                 .then(function(success){
 
                     ToasterService.Add("success",success.data.msg);
@@ -39,7 +40,7 @@ function authServiceFunction(app){
 
         //register function
         authFactory.Register=(user)=>{
-            $http.post("http://localhost:8001/api/users/register",user)
+            $http.post(`${url}/api/users/register`,user)
                 .then(function(success){
                     ToasterService.Add("success",success.data.msg);
                     JwtService.SaveToken(success.data.token);
@@ -60,7 +61,7 @@ function authServiceFunction(app){
 
         //sends recovery request to api, with email provided
         authFactory.RecoverAccount=(email)=>{
-            $http.post("http://localhost:8001/api/users/recover",{email:email})
+            $http.post(`${url}/api/users/recover`,{email:email})
                 .then(function(){
                     //toaster message sent
                     ToasterService.Add("success","Recovery email sent.");
@@ -76,7 +77,7 @@ function authServiceFunction(app){
         //validates jwt
         authFactory.ValidateJwt=()=>{
 
-            return $http.get("http://localhost:8001/api/users/validate");
+            return $http.get(`${url}/api/users/validate`);
 
         };
 
@@ -86,7 +87,7 @@ function authServiceFunction(app){
     }
 
     //services needed
-    authServiceController.$inject = ["$http","JwtService","$state","ToasterService"];
+    authServiceController.$inject = ["$http","JwtService","$state","ToasterService","AppConfig"];
 
     app.factory("AuthService",authServiceController);
 }

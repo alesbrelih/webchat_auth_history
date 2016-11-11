@@ -32,6 +32,14 @@ function useComponents(app){
     const mainWrapperComponent = require("./main/main.component");
     mainWrapperComponent(app);
 
+    /////////////////////////////////
+    // ----- profile componens ------
+    ////////////////////////////////
+
+    // profile components wrapper
+    const profileWrapperComponent = require("./main/profile/profile.component");
+    profileWrapperComponent(app);
+
 
 
     //////////////////////////////////////
