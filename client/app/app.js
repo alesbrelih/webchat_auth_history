@@ -7,6 +7,14 @@
 
     const app = angular.module("webChat",["ui.router","ngAnimate"]);
 
+
+    /////////////////////////////////////
+    // ------ angular constants -------
+    /////////////////////////////////////
+
+    const constants = require("./config/constants/app.config");
+    constants(app);
+
     /////////////////////////////////////
     // ------- state config module ------
     /////////////////////////////////////

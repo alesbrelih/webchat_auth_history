@@ -1,0 +1,47 @@
+<div class="wrapper">
+
+    <!--header-->
+    <div class="header">
+        <div class="app-name-display">
+            {{vm.title}}
+        </div>
+        <div class="user-actions">
+            <ul>
+                <li>
+                    <a class="fa fa-comments-o" aria-hidden="true"></a>
+                </li>
+                <li>
+                    <a class="fa fa-user" aria-hidden="true"></a>
+                </li>
+                <li>
+                    <a class="fa fa-sign-out" ng-click="vm.logout()" aria-hidden="true"></a>
+                </li>
+                <li>
+                    <a class="fa fa-bars" aria-hidden="true" ng-click="vm.toggleSidebar()"></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!--sidebar for small display-->
+    <div class="sidebar" ng-class="{show:vm.sidebar}">
+        <div class="sidebar-content">
+            <div class="close-btn">
+                <i class="fa fa-times" aria-hidden="true" ng-click="vm.toggleSidebar()"></i>
+            </div>
+            <div class="links">
+                <ul>
+                <li><a href="#" ui-sref="main">Profile</a></li>
+                <li><a href="#" ui-sref="main">Chat</a></li>
+                <li><a href="" ng-click="vm.logout()" >Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--main dynamic window-->
+    <div class="main-content" ui-view>
+
+    </div>
+</div>

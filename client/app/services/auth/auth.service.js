@@ -27,6 +27,16 @@ function authServiceFunction(app){
                 });
         };
 
+        //logout function
+        authFactory.Logout=()=>{
+
+            //remove token, show toaster and redirect to auth.login
+            JwtService.RemoveToken();
+            ToasterService.Add("alert", "Logged out.");
+            $state.go("auth.login");
+
+        };
+
         //register function
         authFactory.Register=(user)=>{
             $http.post("http://localhost:8001/api/users/register",user)

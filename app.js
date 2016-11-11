@@ -48,6 +48,7 @@ app.use("/login",express.static(path.join(__dirname,"client/app/components/auth/
 app.use("/register",express.static(path.join(__dirname,"client/app/components/auth/register")));
 app.use("/toaster",express.static(path.join(__dirname,"client/app/components/toaster")));
 app.use("/recovery",express.static(path.join(__dirname,"client/app/components/auth/recovery")));
+app.use("/main",express.static(path.join(__dirname,"client/app/components/main")));
 
 
 

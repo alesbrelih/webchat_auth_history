@@ -1,0 +1,224 @@
+ab-main-view{
+
+    //bg / sizing
+    display:flex;
+    background-color:$blue-default;
+    width:100vw;
+    min-height: 100vh;
+
+    //wrapper for main content
+    .wrapper{
+
+        //size on big screens
+        width:960px;
+        margin:40px auto; //centered and top/bot margin
+        min-height:300px;
+        background-color:$gray-light; //bg color
+        border-radius:5px; //rounded border
+
+        //Special border
+        box-shadow:-3px -3px 0px 2px lighten($blue-default,5%);
+
+        //default border
+        border:2px solid $blue-default; 
+
+        //font styling
+        font-size:16px;
+        font-family:"Raleway",cursive;
+        
+        //header in main content styles
+        .header{
+            //display
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+
+            //border rounding on top side
+            border-top-left-radius:inherit;
+            border-top-right-radius:inherit;
+
+            //font styles
+            color:$blue-default;
+            font-size:1.5em;
+            
+            // app name display
+            .app-name-display{
+                //margins / padding
+                margin:40px 0px 40px 40px;
+                padding:10px 0px 10px 50px;
+
+                //font styles
+                font-size:1.4em;
+                line-height:1.4em;
+                font-family: 'Gloria Hallelujah', cursive;
+                text-decoration:underline;
+
+                }
+
+                //action links on right
+                .user-actions{
+                
+                margin:30px 50px 30px 0px;
+                font-size:1.3em;
+                
+                //list of links
+                ul{
+                    list-style:none;
+
+                    li{
+                        //links
+                        //inline displayed and padding
+                        display:inline;
+                        padding:20px 20px 20px 0px;
+
+                        //last is hamburger so its hidden and different padding for when its shown
+                        &:last-child{
+                            display:none;
+                            padding:20px 0px 20px 5px;
+                        }
+
+                        a{
+                            //link default style
+                            cursor:pointer;
+                            text-decoration:none;
+                            color:$blue-default;
+                            transform-origin:center center;
+
+                            //hover style
+                            &:hover{
+                                transform:scale(1.1);
+                            }
+                            //on click style
+                            &:active{
+                                transform:scale(0.95);
+                                color:$blue-darker;
+                            }
+                        }
+                    
+                    }
+                }
+            }
+        }
+
+
+        //sidebar for small screens
+        .sidebar{
+            //fixed, on top of all, location and sizing styles
+            z-index:1000;
+            height:100vh;
+            width:150px; 
+            position:fixed;
+            top:0;
+            right:-300px; //sidebar hidden on default
+            opacity:0;
+
+            //bg, border rounding and default padding
+            background-color:#eee;
+            border-left:3px solid $blue-default;
+            padding:25px;
+            
+            //transition
+            transition:all 200ms ease-in-out;
+
+            //when shown his right is 0;
+            &.show{
+                right:0px;
+                opacity:1;
+            }
+
+            //sidebar content container, needed to have a relative container for absolute close btn
+            .sidebar-content{
+                position:relative;
+                width:100%;
+                height:100%;
+
+                display:flex;
+                justify-content:center;
+                align-items:center;
+
+                //close btn
+                .close-btn{
+                    position:absolute;
+
+                    //font styling for btn
+                    color:$blue-default;
+                    font-size:2.5em;
+                    //location
+                    top:0px;
+                    left:10px;
+                    cursor:pointer;
+
+                    //hover effect
+                    :hover{
+                    transform:scale(1.05);
+                    }
+                }
+            //links styles
+                .links{
+                    font-family:"Gloria Hallelujah",cursive;
+                    ul{
+                        list-style:none;
+                        li{
+                            padding:5px;
+
+                            //font style
+                            font-size:1.6em;
+                            text-decoration:underline;
+                            a{
+                                color:$blue-default; 
+                            }
+                        }
+                    }
+                
+                }
+            }
+        }
+    }
+}
+///////////////////////////
+//responsive design
+//////////////////////////
+
+@media(max-width:960px){
+    ab-main-view{
+        .wrapper{
+            width:100%;
+            margin:15px 15px;
+        }
+    }
+  
+}
+@media(max-width:750px){
+    ab-main-view{
+        .wrapper{
+            font-size:14px;
+        }
+    }
+
+@media(max-width:550px){
+    ab-main-view{
+        .wrapper{
+            font-size:12px;
+            .header{
+                .app-name-display{
+                    padding-left:0px !important;
+                }
+                .user-actions{
+                    margin-right:40px;
+                    ul{
+                        li{
+                            &:not(:last-child){
+                                display:none;
+                            }
+                            &:last-child{
+                                display:inline; 
+                            }
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+}
+} 

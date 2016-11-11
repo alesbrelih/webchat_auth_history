@@ -3,11 +3,15 @@
 /////////////////////////////
 
 //blue
-$blue-default:#1e88e5;
+//$blue-default:#1e88e5;
+$blue-default:#0071bc;
 $blue-light:lighten($blue-default,10%);
+$blue-darker:#205493;
+$blue-darkest:#112e51;
 
 //gray
 $gray-light:#eee;
+$gray-darker:#aeb0b5;
 
 $gray-btn-disabled:#bdbdbd;
 $gray-btn-disabled-border:#e0e0e0;
@@ -18,5 +22,11 @@ $orange-default:#ff7043;
 //green
 $green-default:#64dd17;
 
-$red-default:#f44336;
+//Red
+$red-default:#cd2026;
 $red-light:#ff8a80;
+
+
+
+//base
+$base:#212121;

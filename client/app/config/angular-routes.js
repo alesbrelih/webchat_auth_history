@@ -26,6 +26,10 @@ function angularStateConfig(app){
             .state("auth.recovery",{
                 url:"/recovery",
                 template:"<recovery-view></recovery-view>"
+            })
+            .state("main",{
+                url:"/main",
+                template:"<ab-main-view></ab-main-view>"
             });
             
         $urlRouterProvider.otherwise("/");

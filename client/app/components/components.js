@@ -3,6 +3,10 @@
 /////////////////////////////////////////////
 function useComponents(app){
 
+    /////////////////////////////////////////////
+    // -------- auth compoenents ---------------
+    ////////////////////////////////////////////
+    
     //registers auth component, that serves as wrapper for login/register component
     const authComponent = require("./auth/auth.component");
     authComponent(app);
@@ -18,6 +22,21 @@ function useComponents(app){
     //recover account component
     const recoverComponent = require("./auth/recovery/recovery.component");
     recoverComponent(app);
+
+
+    //////////////////////////////////
+    // ---- main window components ---
+    ///////////////////////////////////
+
+    //main window wrapper
+    const mainWrapperComponent = require("./main/main.component");
+    mainWrapperComponent(app);
+
+
+
+    //////////////////////////////////////
+    // --- helper components ------------
+    /////////////////////////////////////
 
     //toaster container
     const toasterContainerComponent = require("./toaster/toaster.component");
