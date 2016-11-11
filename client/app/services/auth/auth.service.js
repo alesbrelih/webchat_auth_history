@@ -5,8 +5,15 @@
 function authServiceFunction(app){
 
     function authServiceController($http,JwtService,$state,ToasterService,AppConfig){
-
+        //url from config
         var url = AppConfig.url;
+
+
+        /////////////////////////////////
+        ///////////////////////////////77
+
+        var currentUser = {};
+
         //returned singleton
         let authFactory = {};
 
@@ -53,6 +60,21 @@ function authServiceFunction(app){
                     
                 });
         };
+        
+        //gets user info from DB
+        authFactory.GetProfileInfo=()=>{
+            $http.get(`${url}/api/users/profile`)
+                .then(function(success){
+
+                    currentUser.email=success.data.email;
+
+                },function(err){
+
+                    ToasterService.Add("warning",err.data);
+                    $state.go("home");
+
+                });
+        };
 
         //checks if user already authorized
         authFactory.IsAuthorized=()=>{
@@ -80,6 +102,9 @@ function authServiceFunction(app){
             return $http.get(`${url}/api/users/validate`);
 
         };
+        
+        //current profile
+        authFactory.Profile = currentUser;
 
         //return singleton
         return authFactory;

@@ -120,6 +120,35 @@ function usersApiRouter(express,passport){
 
     });
 
+    //get user profile data
+    router.get("/profile",passport.authenticate("jwt",{session:false}),function(req,res){
+
+        //route needs authorization
+
+        User.getIdFromJwt(req.headers.token).then(function(success){
+            
+            //finds user from verified JWT
+            User.findOne({_id:success},function(err,user){
+                //err
+                if(err){
+                    res.status(500).send("Error retrieving user data from DB.");
+                }
+                else{
+                    if(user){
+                        res.status(200).send(user);
+                    }
+                    else{
+                        res.status(400).send("No such user in DB.");
+                    }
+                }
+            });
+        }).catch(function(err){
+            //err verifying JWT
+            res.status(400).send(err);
+        });
+
+    });
+    
     //return router
     return router;
 }

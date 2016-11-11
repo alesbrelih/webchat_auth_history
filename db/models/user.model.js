@@ -58,5 +58,28 @@ User.methods.generateJwt = function(recoverAcc){
     return token;
 };
 
+//gets id from Jwt
+User.statics.getIdFromJwt = function(jwt_token){
+
+    //returns promise
+    var promise = new Promise(function(resolve,reject){
+
+        //decode jwt
+        jwt.verify(jwt_token,props.secret,function(err,decoded){
+            if(err){
+                //error verifying jwt
+                reject("Invalid Jwt");
+            }
+            else{
+                //resolve id
+                resolve(decoded._id);
+            }
+
+        });
+    });
+    
+    return promise;
+};
+
 //export user schema
 module.exports = mongoose.model("User",User);

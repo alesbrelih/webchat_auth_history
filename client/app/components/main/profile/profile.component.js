@@ -7,22 +7,10 @@ function profileComponentModule(app){
     //profile component controller
     function profileComponentController(AuthService){
 
-        var vm = this;
 
-        //get profile info
-        // vm.profile=AuthService.GetProfileInfo();
-
-        // //edit info when called upon
-        // vm.editProfile=(editedProfile)=>{
-        //     AuthService.EditProfile(editedProfile);
-        // };
-
-        // //change user pwd when called upon
-        // vm.changePwd = (pwd)=>{
-        //     AuthService.ChangePwd(pwd);
-        // };
+        //gets profile info from server
+        AuthService.GetProfileInfo();
     }
-
 
     //Inject authservice
     profileComponentController.$inject = ["AuthService"];
@@ -31,9 +19,8 @@ function profileComponentModule(app){
     app.component("abProfile",{
         templateUrl:"/profile/profile.component.html",
         controller: profileComponentController,
-        controllerAs: "vm"
+        controllerAs: "profile"
     });
-
 }
 
 //export module

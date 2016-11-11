@@ -40,6 +40,10 @@ function useComponents(app){
     const profileWrapperComponent = require("./main/profile/profile.component");
     profileWrapperComponent(app);
 
+    //profile view component
+    const profileViewComponent = require("./main/profile/view/profile.view.component");
+    profileViewComponent(app);
+
 
 
     //////////////////////////////////////

@@ -9,8 +9,14 @@
     width:100vw;
     min-height: 100vh;
     
+    
 }
-
+.main-content{
+    padding:20px 40px 60px 40px;
+}
+div[ui-view]{
+    display:block;
+}
 //import auth styles
 @import "./auth/_auth.scss";
 

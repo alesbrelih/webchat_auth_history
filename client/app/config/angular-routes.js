@@ -35,7 +35,7 @@ function angularStateConfig(app){
             })
             //profile states
             .state("main.profile",{
-                //abstract:true,
+                abstract:true,
                 url:"/profile",
                 template:"<ab-profile></ab-profile>"
             })
