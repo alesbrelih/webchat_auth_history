@@ -4,6 +4,11 @@
 
 function registerAllServices(app){
 
+    //profile component service
+    const profileComponentService = require("./profile/profile.service");
+    profileComponentService(app);
+
+
     // Auth service
     const authService = require("./auth/auth.service");
     authService(app);

@@ -5,15 +5,15 @@
 function profileComponentModule(app){
 
     //profile component controller
-    function profileComponentController(AuthService){
+    function profileComponentController(ProfileComponentsService){
 
 
-        //gets profile info from server
-        AuthService.GetProfileInfo();
+        //gets profile info from server when profile routes are selected
+        ProfileComponentsService.GetProfile();
     }
 
     //Inject authservice
-    profileComponentController.$inject = ["AuthService"];
+    profileComponentController.$inject = ["ProfileComponentsService"];
     
     //declare component
     app.component("abProfile",{

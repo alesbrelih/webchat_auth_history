@@ -5,13 +5,14 @@ ab-main-view{
     background-color:$blue-default;
     width:100vw;
     min-height: 100vh;
-
+    align-items:center; 
+    justify-content: center;
     //wrapper for main content
     .wrapper{
 
         //size on big screens
         width:960px;
-        margin:40px auto; //centered and top/bot margin
+        
         min-height:300px;
         background-color:$gray-light; //bg color
         border-radius:5px; //rounded border

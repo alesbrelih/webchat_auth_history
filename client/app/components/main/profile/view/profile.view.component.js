@@ -5,14 +5,14 @@
 function profileViewComponentModule(app){
 
     //profileView controller
-    function profileViewController(AuthService){
+    function profileViewController(ProfileComponentsService){
         var vm = this;
         
-        vm.profile = AuthService.Profile;
+        vm.profile = ProfileComponentsService.Profile;
 
     }
 
-    profileViewController.$inject = ["AuthService"];
+    profileViewController.$inject = ["ProfileComponentsService"];
 
 
     //define component ab-profile-view

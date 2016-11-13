@@ -50,6 +50,7 @@ app.use("/toaster",express.static(path.join(__dirname,"client/app/components/toa
 app.use("/recovery",express.static(path.join(__dirname,"client/app/components/auth/recovery")));
 app.use("/main",express.static(path.join(__dirname,"client/app/components/main")));
 app.use("/profile",express.static(path.join(__dirname,"client/app/components/main/profile")));
+app.use("/img",express.static(path.join(__dirname,"img")));
 
 
 

@@ -62,19 +62,19 @@ function authServiceFunction(app){
         };
         
         //gets user info from DB
-        authFactory.GetProfileInfo=()=>{
-            $http.get(`${url}/api/users/profile`)
-                .then(function(success){
+        // authFactory.GetProfileInfo=()=>{
+        //     $http.get(`${url}/api/users/profile`)
+        //         .then(function(success){
 
-                    currentUser.email=success.data.email;
+        //             currentUser.email=success.data.email;
 
-                },function(err){
+        //         },function(err){
 
-                    ToasterService.Add("warning",err.data);
-                    $state.go("home");
+        //             ToasterService.Add("warning",err.data);
+        //             $state.go("home");
 
-                });
-        };
+        //         });
+        // };
 
         //checks if user already authorized
         authFactory.IsAuthorized=()=>{

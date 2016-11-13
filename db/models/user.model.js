@@ -11,9 +11,25 @@ const schema = mongoose.Schema;
 
 //create new schema
 const User = new schema({
+    name:{
+        type:String,
+        default:"Aleš"
+    },
+    surname:{
+        type:String,
+        default:"Brelih"
+    },
+    country:{
+        type:String,
+        default:"Slovenia"
+    },
     email:{
         type:String,
         unique:true //its gonna be used as uusername
+    },
+    picture:{
+        type:String,
+        default:"/img/no-profile-pic.jpg"
     },
     hash:{
         type:String

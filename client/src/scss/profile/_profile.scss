@@ -1,0 +1,225 @@
+////////////////////////////////////////
+// ----- profile components styles -----
+///////////////////////////////////////
+
+.personal-info{
+
+    //set box sizing
+    *,*:before,*:after{
+        box-sizing: border-box;
+
+    }
+
+    //title stlye
+    .title{
+
+        //font styles
+        font-family: 'Gloria Hallelujah', cursive;
+        font-size:1.2em;
+        color:white;
+        text-align:center;
+        width:100%;
+        
+        //container styles
+        background-color:$blue-default;
+        padding:12px;
+        border-top-left-radius:5px;
+        border-top-right-radius:5px;
+        
+        
+        }
+        //personal info content wrapper
+        .personal-info-content{
+            //positioning
+            display:flex;
+            align-items:center;
+            padding:20px;
+            
+            //wrapper body stylig
+            background-color:white;
+            border-left:2px solid $blue-default;
+            border-right:2px solid $blue-default;
+            border-bottom:2px solid $blue-default;
+            border-bottom-left-radius:5px;
+            border-bottom-right-radius:5px;
+
+            //picture container styling
+            .picture{
+                //size and position
+                flex:3;                
+                align-items:center;
+                margin-left:20px;
+
+                //img styling inside picture wrapper
+                img{
+                    max-width:100%; //responsive
+
+                    //additional border
+                    border-radius:5px;
+                    border:2px solid $gray-darker; 
+                }
+                
+            }
+
+            //info data wrapper
+            .info{
+                //size and styling
+                flex:3;
+                margin-left:20%;
+                max-width:100%;
+
+                //dl content
+                dl{
+                    padding-left:20px;
+
+                    dt{
+                        //dl headers styles
+                        padding:5px;
+                        color:$blue-default;
+                        font-family:"Gloria Hallelujah",cursive;
+                        &:not(:first-child){
+                        margin-top:10px;
+                        }
+                    }
+                    dd{
+                        //dl text styles
+                        padding:5px;
+                        //font-style:italic;
+                    }
+                }
+
+                //action buttons for edit/change pwd
+                .change-info-actions{
+                    //wrapper positioning
+                    padding:20px;
+                    text-align:center;
+
+                    //buttons styles
+                    a{
+                        //button positioning and sizing
+                        display:inline-block;
+                        margin-left:13px;
+                        margin-right:13px;
+                        width:60px;
+                        height:60px;
+
+                        //font styling
+                        font-size:1.5em;
+                        line-height:55px;
+                        color:white;
+                        
+                        //body styling
+                        text-decoration:none;
+                        background-color:$blue-default;
+                        border:2px solid $blue-default;
+
+                        &:hover{
+                            //hover effect
+                            background-color:white;
+                            border:2px solid $blue-default;
+                            color:$blue-default;
+                        }
+                        &:active{
+                            //active effect
+                            transform:scale(0.95);
+                        }
+                        //styles for change pwd btn
+                        &.change-password{
+                            background-color:$red-default;
+                            border-color:$red-default;
+                        &:hover{
+                            background-color:white;
+                            color:$red-default;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+}
+
+//media styles
+@media(max-width:960px){
+  .personal-info-content{
+    .info{
+        flex:2;
+        margin-left:10px !important;
+        }
+    }
+}
+@media(max-width:750px){
+  .personal-info-content{
+    .info{
+        flex:2;
+        margin-left:5px !important;
+          
+        }
+    }
+ }
+@media(max-width:700px){
+  .personal-info-content{
+    flex-direction:column;
+    .picture{
+        margin-left:0px !important;
+        margin-bottom:20px;
+          
+    }
+    .info{
+        margin:0px !important;
+        dl{
+            padding:0px !important;
+        }
+    }
+    }
+}
+@media(max-width:550px){
+.personal-info-content{
+    flex-direction:column;
+        .picture{
+            margin-left:0px !important;
+            margin-bottom:20px;
+        }
+        .info{
+            .change-info-actions{
+            a{
+                margin-left:10px !important;
+                margin-right:10px !important;
+              
+                height:40px !important;
+                width:40px !important;
+              
+                line-height:35px !important;
+              
+              
+            }
+        }
+    }
+}
+}
+@media(max-width:380px){
+.personal-info-content{
+
+    .info{
+        .change-info-actions{
+            padding:0px !important;
+            a{
+                margin-left:10px !important;
+                margin-right:10px !important;
+                
+                height:40px !important;
+                width:40px !important;
+                
+                line-height:35px !important;
+                
+                &:not(:first-child){
+                    margin-top:5px !important;
+                }
+              
+            }
+          
+        }
+    }
+}
+}

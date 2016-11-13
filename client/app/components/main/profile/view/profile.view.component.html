@@ -1,1 +1,33 @@
-<h1>h1 {{vm.profile.email}}</h1>
+<div class="personal-info">
+    <div class="title">
+        Personal Information
+    </div>
+    <div class="personal-info-content">
+        <div class="picture">
+
+            <img src="/img/no-profile-pic.jpg" alt="No profile picture."/>
+
+        </div>
+        <div class="info">
+
+            <dl>
+                <dt>Name</dt>
+                <dd>{{vm.profile.name}}</dd>
+
+                <dt>Surname</dt>
+                <dd>{{vm.profile.surname}}</dd>
+
+                <dt>Country</dt>
+                <dd>{{vm.profile.country}}</dd>
+
+                <dt>Email</dt>
+                <dd>{{vm.profile.email}}</dd>
+
+            </dl>
+            <div class="change-info-actions">
+                <a href="#" class="edit-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#" class="change-password"> <i class="fa fa-unlock" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -23,6 +23,14 @@ div[ui-view]{
 //import main styles
 @import "./main/_main.scss";
 
+//import profile styles
+@import "./profile/_profile.scss";
+
+@media(max-width:550px){
+    .main-content{
+        padding:20px 20px 40px 20px;
+    }
+}
 
 
    
