@@ -11,7 +11,8 @@ function profileServiceModule(app){
             name:"",
             surname:"",
             country:"",
-            email:""
+            email:"",
+            picture:""
 
         };
 
@@ -30,6 +31,7 @@ function profileServiceModule(app){
                     profile.surname = success.data.surname;
                     profile.country = success.data.country;
                     profile.email=success.data.email;
+                    profile.picture = success.data.picture;
 
                 },function(err){
 

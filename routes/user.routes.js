@@ -5,6 +5,9 @@
 // needed modules for users router
 var User = require("./../db/models/user.model");
 var sendMail = require("../config/nodemailer/nodemailer");
+var pictureUploader = require("../config/multer/multer.config")();
+var fs = require("fs");
+var path = require("path");
 
 function usersApiRouter(express,passport){
 
@@ -149,6 +152,82 @@ function usersApiRouter(express,passport){
 
     });
     
+    //updating user info
+    router.put("/profile",passport.authenticate("jwt",{session:false}),function(req,res){
+        //find current user
+        User.findById(req.body._id,function(err,user){
+            //error finding user
+            if(err){
+                res.send(500).Send("Error connecting to DB / Cannot find current user.");
+            }
+            else{
+                //user found in db
+                
+                //change data
+                user.name = req.body.name;
+                user.surname = req.body.surname;
+                user.country = req.body.country;
+
+                //check if profile picture was changed
+                if(user.picture!=req.body.profile_photo){
+                    pictureUploader(req,res,function(err){
+                        //save img to server
+                        if(err){
+                            //error saving img
+                            res.status(400).send("Error saving selected photo. Please check photo size and format and try again.");
+                        }
+                        //img saved
+                        else{
+
+                            //Set img path to user picture prop in DB
+                            user.picture = req.file.path;
+
+                            //update user
+                            user.save(function(err,updatedUser){
+                                if(err){
+
+                                    //err updating
+                                    res.status(400).Send("Error connecting to DB / Cannot save user info.");
+                                }
+                                else{
+                                    //success updating
+
+                                    //delete previous picture
+                                    var previousImg = path.join(__dirname,user.picture);
+
+                                    fs.unlink(previousImg,function(err){
+                                        if(err){
+                                            console.error("Error deleting file from server");
+                                        }
+                                        res.status(200).Send(updatedUser);
+                                    });
+                                    
+                                }
+                            });
+                        }
+
+                    });
+
+                }
+                else{
+                    //picture wasnt changed
+
+                    //update user
+                    user.save(function(err,updatedUser){
+                        if(err){
+                            res.status(400).Send("Error connecting to DB / Cannot save user info.");
+                        }
+                        else{
+                            res.status(200).Send(updatedUser);
+                        }
+                    });
+                }
+                
+
+            }
+        });
+    });
+
     //return router
     return router;
 }
