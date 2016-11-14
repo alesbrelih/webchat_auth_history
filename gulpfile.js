@@ -4,6 +4,7 @@
 
 const gulp = require("gulp");
 const browserify = require("browserify"); //browserify support for js
+const sourcemaps = require("gulp-sourcemaps");
 const source = require("vinyl-source-stream"); //for transform browserify bundle into source
 const buffer = require("vinyl-buffer"); //transform source into buffer
 const uglify = require("gulp-uglify"); //minify JS
@@ -14,6 +15,7 @@ const cleanCss = require("gulp-clean-css"); //minify css
 const autoPrefixer = require("gulp-autoprefixer"); //css prefixer
 const browserSync = require("browser-sync");
 const karma = require("karma").Server;
+const fileUrl = require("file-url"); //gets file absolute path
 
 ///////////////////////////////////////////////
 
@@ -33,7 +35,7 @@ const scssFiles = ["client/src/scss/**/*.scss"];
 
 //clientside javascript browserify/uglify
 gulp.task("browserify",function(){
-    return browserify("client/app/app.js")
+    return browserify("client/app/app.js",{debug:true})
         .transform("babelify",{presets:["es2015"]})
         .bundle()
         .on("error",function(err){ //browserify error handling
@@ -48,7 +50,9 @@ gulp.task("browserify",function(){
         }))
         .pipe(source("app.js"))
         .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps:true}))
         .pipe(uglify())
+        .pipe(sourcemaps.write({includeContent:false,sourceRoot:fileUrl(__dirname)})) //sourcemaps need to point to the file on disk so visual code debugger can use them
         .pipe(gulp.dest("public/dist/scripts/"));
 });
 

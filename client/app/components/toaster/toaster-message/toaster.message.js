@@ -20,7 +20,7 @@ function toasterMessageModule(app){
 
     //component definition
     app.component("abToastMsg",{
-        templateUrl:"/toaster/toaster-message/toaster.message.html",
+        templateUrl:"/toaster-message/toaster.message.html",
         controller:toasterMessageController,
         controllerAs:"vm",
         bindings:{

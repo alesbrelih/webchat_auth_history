@@ -1,0 +1,60 @@
+.base-rounded-img-btn{
+    //button positioning and sizing
+    display:inline-block;
+    margin-left:13px;
+    margin-right:13px;
+    width:60px;
+    height:60px;
+    border-radius:50%; 
+
+    //font styling
+    font-size:1.5em;
+    line-height:55px;
+    color:white;
+    
+    //body styling
+    text-decoration:none;
+    background-color:$blue-default;
+    border:2px solid $blue-default;
+
+    &:hover{
+        //hover effect
+        background-color:white;
+        border:2px solid $blue-default;
+        color:$blue-default;
+    }
+    &:active{
+        //active effect
+        transform:scale(0.95);
+    }
+}
+
+
+//defualt style for text inputs
+.base-text-input{
+    //margins / paddings
+    margin-left:10px;
+    margin-right:10px;
+    border-radius:5px;
+    padding:12px;
+    margin-bottom:5px;
+    text-align: center;
+
+    //no default border/outline
+    border:none;
+    outline:none;
+    
+    //font family
+    font-family: 'Raleway', sans-serif !important;
+    
+    //text input border
+    &[type="text"],&[type="password"],&[type="email"]{
+        border:2px solid lighten($blue-default,10%);
+        &:not(:focus).ng-not-empty.ng-touched.ng-invalid{
+            background-color:$red-light;
+            color:white; 
+            border-color:$red-default;
+        }
+        
+    }
+}

@@ -17,7 +17,7 @@ function profileViewComponentModule(app){
 
     //define component ab-profile-view
     app.component("abProfileView",{
-        templateUrl:"/profile/view/profile.view.component.html",
+        templateUrl:"/profile-view/profile.view.component.html",
         controller: profileViewController,
         controllerAs: "vm"
     });

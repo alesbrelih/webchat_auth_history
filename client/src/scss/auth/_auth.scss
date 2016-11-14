@@ -64,31 +64,10 @@ auth-view{
         }
         //input styles
         input,label{
-            //margins / paddings
-            margin-left:10px;
-            margin-right:10px;
-            border-radius:5px;
-            padding:12px;
-            margin-bottom:5px;
-            text-align: center;
+            
+            //extend base text input style 
+            @extend .base-text-input;
 
-            //no default border/outline
-            border:none;
-            outline:none;
-            
-            //font family
-            font-family: 'Raleway', sans-serif !important;
-            
-            //text input border
-            &[type="text"],&[type="password"],&[type="email"]{
-                border:2px solid lighten($blue-default,10%);
-                &:not(:focus).ng-not-empty.ng-touched.ng-invalid{
-                    background-color:$red-light;
-                    color:white; 
-                    border-color:$red-default;
-                }
-                
-            }
             //button default styles
             &[type="button"],&.submit{
 

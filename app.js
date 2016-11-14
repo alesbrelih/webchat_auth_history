@@ -43,13 +43,15 @@ app.use(body_parser.json());
 ///////////////////////////////////////////
 
 app.use(express.static(path.join(__dirname,"public")));
-app.use("/auth",express.static(path.join(__dirname,"client/app/components/auth")));
-app.use("/login",express.static(path.join(__dirname,"client/app/components/auth/login")));
-app.use("/register",express.static(path.join(__dirname,"client/app/components/auth/register")));
-app.use("/toaster",express.static(path.join(__dirname,"client/app/components/toaster")));
-app.use("/recovery",express.static(path.join(__dirname,"client/app/components/auth/recovery")));
-app.use("/main",express.static(path.join(__dirname,"client/app/components/main")));
-app.use("/profile",express.static(path.join(__dirname,"client/app/components/main/profile")));
+app.use("/auth",express.static(path.join(__dirname,"client/app/components/auth/template")));
+app.use("/login",express.static(path.join(__dirname,"client/app/components/auth/login/template")));
+app.use("/register",express.static(path.join(__dirname,"client/app/components/auth/register/template")));
+app.use("/toaster",express.static(path.join(__dirname,"client/app/components/toaster/template")));
+app.use("/toaster-message",express.static(path.join(__dirname,"client/app/components/toaster/toaster-message/template")));
+app.use("/recovery",express.static(path.join(__dirname,"client/app/components/auth/recovery/template")));
+app.use("/main",express.static(path.join(__dirname,"client/app/components/main/template")));
+app.use("/profile",express.static(path.join(__dirname,"client/app/components/main/profile/template")));
+app.use("/profile-view",express.static(path.join(__dirname,"client/app/components/main/profile/view/template")));
 app.use("/img",express.static(path.join(__dirname,"img")));
 
 
