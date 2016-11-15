@@ -4,7 +4,7 @@
 
 function httpInterceptorFunction(app){
 
-    function httpInterceptorController($q,JwtService,$rootScope){
+    function httpInterceptorController($q,JwtService,$rootScope,AppConfig){
 
         return {
             //add token to header on every request
@@ -14,6 +14,7 @@ function httpInterceptorFunction(app){
                 if(JwtService.TokenExists()){
                     config.headers.token = JwtService.GetToken();
                 }
+                
                 return config;
             },
 
@@ -31,7 +32,7 @@ function httpInterceptorFunction(app){
 
     }
 
-    httpInterceptorController.$inject = ["$q","JwtService","$rootScope"];
+    httpInterceptorController.$inject = ["$q","JwtService","$rootScope","AppConfig"];
 
     app.factory("HttpInterceptor",httpInterceptorController);
 

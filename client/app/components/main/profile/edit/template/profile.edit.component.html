@@ -4,7 +4,7 @@
         Edit Profile
     </div>
     <div class="form-container">
-        <form enctype="multipart/form-data" name="editForm" novalidate>
+        <form enctype="multipart/form-data" name="editForm" novalidate ng-submit="vm.submitChanges()">
             <div class="form-control">
                 <span class="name">Name</span>
                 <input type="text" ng-model="vm.editedProfile.name">
@@ -54,7 +54,7 @@
                     <i class="fa fa-ban red"></i>
                 </label>   
             </li>-->
-            <li><a href="#" class="fa fa-long-arrow-left"></a></li>
+            <li><a ui-sref="main.profile.view" class="fa fa-long-arrow-left"></a></li>
         </ul>
     </div>
 </div>

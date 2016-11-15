@@ -12,12 +12,10 @@ function profileEditComponentModule(app){
         vm.editedProfile = Object.create(ProfileComponentsService.Profile);
         
         //call service to edit profile
-        vm.editProfile=()=>{
+        vm.submitChanges=()=>{
             ProfileComponentsService.EditProfile(vm.editedProfile);
         };
-        vm.consoleLog=()=>{
-            console.log(vm.editedProfile);
-        };
+
         
     }
 

@@ -5,7 +5,7 @@
     <div class="personal-info-content">
         <div class="picture">
 
-            <img ng-src="{{vm.profile.picture}}" alt="No profile picture."/>
+            <img ng-src="{{vm.profile.pictureUrl}}" alt="No profile picture."/>
 
         </div>
         <div class="info">
@@ -25,7 +25,7 @@
 
             </dl>
             <div class="change-info-actions">
-                <a href="#" class="edit-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a ui-sref="main.profile.edit" class="edit-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 <a href="#" class="change-password"> <i class="fa fa-unlock" aria-hidden="true"></i></a>
             </div>
         </div>
