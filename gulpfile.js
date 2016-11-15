@@ -138,7 +138,7 @@ gulp.task("default",["browserify","scss"],function(){
 
 gulp.task("karma",function(done){
     new karma({
-    configFile: __dirname + '/client/app/tests/karma.conf.js',
+    configFile: __dirname + "/client/app/tests/karma.conf.js",
     singleRun: true
   }, done).start();
 });

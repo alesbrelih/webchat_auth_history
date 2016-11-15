@@ -2,6 +2,7 @@
   "globalDependencies": {
     "angular": "registry:dt/angular#1.5.0+20161016133926",
     "express": "registry:dt/express#4.0.0+20160708185218",
-    "node": "registry:dt/node#6.0.0+20161019125345"
+    "node": "registry:dt/node#6.0.0+20161110151007",
+    "node-dir": "registry:dt/node-dir#0.0.0+20160902120332"
   }
 }

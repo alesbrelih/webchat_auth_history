@@ -27,7 +27,7 @@ const User = new schema({
         type:String,
         unique:true //its gonna be used as uusername
     },
-    picture:{
+    pictureUrl:{
         type:String,
         default:"/img/no-profile-pic.jpg"
     },

@@ -10,6 +10,10 @@ const passport_jwt = require("./config/jwt/jwt.strategy");
 const dbConnect = require("./db/db.connect");
 const jwt = require("jsonwebtoken");
 const props = require("./config/properties");
+const winston = require("winston"); //logging
+
+//set logging
+winston.level = "debug";
 
 
 /////////////////////////////////
@@ -52,6 +56,7 @@ app.use("/recovery",express.static(path.join(__dirname,"client/app/components/au
 app.use("/main",express.static(path.join(__dirname,"client/app/components/main/template")));
 app.use("/profile",express.static(path.join(__dirname,"client/app/components/main/profile/template")));
 app.use("/profile-view",express.static(path.join(__dirname,"client/app/components/main/profile/view/template")));
+app.use("/profile-edit",express.static(path.join(__dirname,"client/app/components/main/profile/edit/template")));
 app.use("/img",express.static(path.join(__dirname,"img")));
 
 
@@ -99,7 +104,7 @@ app.get("/validate/:jwt",(req,res)=>{
 
 //start server
 server.listen(8001,()=>{
-    console.log("Server is runing");
+    winston.log("debug","Server is runing at 8001");
 });
 
 

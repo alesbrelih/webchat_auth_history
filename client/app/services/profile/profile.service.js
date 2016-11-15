@@ -12,7 +12,8 @@ function profileServiceModule(app){
             surname:"",
             country:"",
             email:"",
-            picture:""
+            pictureUrl:"",
+            picture: null
 
         };
 
@@ -31,7 +32,7 @@ function profileServiceModule(app){
                     profile.surname = success.data.surname;
                     profile.country = success.data.country;
                     profile.email=success.data.email;
-                    profile.picture = success.data.picture;
+                    profile.pictureUrl = success.data.pictureUrl;
 
                 },function(err){
 

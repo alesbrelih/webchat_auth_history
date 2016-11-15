@@ -44,6 +44,10 @@ function useComponents(app){
     const profileViewComponent = require("./main/profile/view/profile.view.component");
     profileViewComponent(app);
 
+    //profile edit component
+    const profileEditComponent = require("./main/profile/edit/profile.edit.component");
+    profileEditComponent(app);
+
 
 
     //////////////////////////////////////

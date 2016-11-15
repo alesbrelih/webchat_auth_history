@@ -9,18 +9,9 @@
     //title stlye
     .title{
 
-        //font styles
-        font-family: 'Gloria Hallelujah', cursive;
-        font-size:1.2em;
-        color:white;
-        text-align:center;
-        width:100%;
+
+        @extend .base-profile-component-title;
         
-        //container styles
-        background-color:$blue-default;
-        padding:12px;
-        border-top-left-radius:5px;
-        border-top-right-radius:5px;
         
         
         }

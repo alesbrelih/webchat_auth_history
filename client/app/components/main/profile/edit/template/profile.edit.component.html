@@ -1,0 +1,60 @@
+<div class="edit-content">
+
+    <div class="title">
+        Edit Profile
+    </div>
+    <div class="form-container">
+        <form enctype="multipart/form-data" name="editForm" novalidate>
+            <div class="form-control">
+                <span class="name">Name</span>
+                <input type="text" ng-model="vm.editedProfile.name">
+            </div>
+            <div class="form-control">
+                <span class="surname">Surname</span>
+                <input type="text" ng-model="vm.editedProfile.surname">
+            </div>
+            <div class="form-control">
+                <span class="country">Country</span>
+                <input type="text" ng-model="vm.editedProfile.country">
+            </div>
+            <div class="form-control">
+                <span class="country">Profile Photo</span>
+                <div class="browse-photo">
+                    <label>
+                        <i role="button" class="fa fa-picture-o" aria-hidden="true"></i>
+                        <input name="fileselect" type="file" ng-model="vm.editedProfile.picture"  ab-file-var ab-img-preview="vm.editedProfile.pictureUrl" hidden />
+                    </label>
+                </div>
+                
+                
+            </div>
+            <input id="submit-edit" ng-disabled="editForm.$invalid" type="submit" hidden>
+
+        </form>
+        <div class="img-wrapper">
+            <img ng-hide="editForm.fileselect.$invalid" ng-src="{{vm.editedProfile.pictureUrl}}" alt="Img here">
+            <div ng-show="editForm.fileselect.$error.supportedImage" class="image-not-valid">
+                Image not valid
+            </div>
+            <div ng-show="editForm.fileselect.$error.imageSize && !editForm.fileselect.$error.supportedImage" class="image-not-valid">
+                Image too big
+            </div>
+
+        </div>
+    </div>
+    <div class="edit-actions">
+        <ul>
+            <li>
+                <label for="submit-edit">
+                    <i class="fa fa-check green" ng-class="{disable:editForm.$invalid}"></i>
+                </label>
+            </li>
+            <!--<li>
+                <label for="reset-edit">
+                    <i class="fa fa-ban red"></i>
+                </label>   
+            </li>-->
+            <li><a href="#" class="fa fa-long-arrow-left"></a></li>
+        </ul>
+    </div>
+</div>

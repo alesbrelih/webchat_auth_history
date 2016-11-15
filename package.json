@@ -37,7 +37,8 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.0",
     "path": "^0.12.7",
-    "socket.io": "^1.5.1"
+    "socket.io": "^1.5.1",
+    "winston": "^2.3.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8",

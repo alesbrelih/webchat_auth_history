@@ -1,0 +1,283 @@
+//////////////////////////////////////////////////////
+// ----- styles for profile edit component ----------
+////////////////////////////////////////////////////
+
+ab-profile-edit{
+    //its column displayed in middle of wrapper
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+
+    //components inner wrapper sizing
+    .edit-content{
+        
+        width:100%;
+        max-width: 400px;
+
+        //title extends default profile component title
+        .title{
+            @extend .base-profile-component-title;
+        }
+
+        //form container styles
+        .form-container{
+            //padding and and border
+            padding:10px;
+            border-left:2px solid $blue-default;
+            border-right:2px solid $blue-default;
+
+            //form styles
+            form{
+
+                //every form visible form control styles
+                .form-control{
+
+                    //extra padding
+                    padding:10px;
+
+                    //flexed, so they are in same row
+                    display:flex;
+
+                    //verticalyl centered
+                    align-items:center;
+
+                    //extra padding for first control
+                    &:first-child{
+                        padding-top:20px;
+                    }
+                    
+                    //control name styles
+                    span{
+                        //sizing and padding
+                        padding:0 10px 0 10px;
+                        flex:2;
+
+                        //font styles
+                        color:$blue-default;
+                        font-size:1.1em;
+                        font-family: "Gloria Hallelujah",cursive;
+
+                    }
+
+                    //text input styles
+                    input[type="text"]{
+
+                        //extend base input style
+                        @extend .base-text-input;
+
+                        //extra styling
+                        border-color:$gray-darker;
+                        flex:3;
+
+                        //border styleon focus
+                        &:focus{
+
+                            border-color:$blue-default;
+
+                        }
+                    }
+
+                    //browse photo button container
+
+                    .browse-photo{
+                        flex:3;
+                        text-align: center;
+                    }
+                    label{
+                    
+                       
+
+                        i{
+                            //extends the rounded btn styles
+                            @extend .base-rounded-img-btn-smaller;
+                                                     
+                        }   
+
+                        //hide default file input (UGLIEH)
+                        input[type="file"]{
+                            display:none;
+
+                        }
+                    }
+                }
+                
+
+            }
+        }
+
+        //preview img and not supported file wrapper
+        .img-wrapper{
+
+            //display/position styles
+            padding:20px 10px;
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            flex-direction:column;
+
+            //img style
+            img{
+
+                max-width:80%;
+                border:2px solid $gray-darker;
+                border-radius:3px;
+
+            }  
+
+            //img not valid div style
+            .image-not-valid{
+
+                //display styles
+                display:flex;
+                width:80%;
+                height:100px;
+                justify-content: center;
+                align-items: center;
+
+                //font styles
+                font-family: "Gloria Hallelujah",cursive;
+                color:$blue-default;
+                font-size:1.1em;
+                flex-wrap: wrap;
+            }
+        }
+
+        //edit component actions styles
+        .edit-actions,.edit-actions>ul{
+
+            //centered inside container
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+        
+            a,i{
+
+                @extend .base-rounded-img-btn; //default rounded img btn
+
+                //extra styles for red/green btns
+                &.green{
+
+                    background-color:$green-default;
+                    border-color: $green-default;
+                    &:hover{
+                        background-color: white;
+                        color:$green-default;
+                    }
+
+                }
+                &.red{
+
+                    background-color:$red-default;
+                    border-color: $red-default;
+                    
+                    &:hover{
+                        background-color: white;
+                        color:$red-default;
+                    }
+
+                }
+            }
+
+        }
+
+        //edit component actions wrapper styles
+        .edit-actions{
+
+            //display
+            padding:20px;
+            padding-bottom:40px;
+            margin-bottom:20px;
+
+            //border
+            border-left:2px solid $blue-default;
+            border-right:2px solid $blue-default;
+            border-bottom:2px solid $blue-default;
+            border-bottom-left-radius:5px;
+            border-bottom-right-radius: 5px;
+
+        }
+
+
+    }
+
+
+}
+
+
+//making it responsive
+@media(max-width:750px){
+    ab-profile-edit{
+        .edit-content{
+            .form-container{
+                .form-control{
+                    input[type="text"]{
+
+                        padding:8px !important;                       
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width:550px){
+    ab-profile-edit{
+        .edit-content{
+            .form-container{
+                .form-control{
+                    input[type="text"]{
+
+                        padding:8px !important;                       
+                    }
+                }
+            }
+            .edit-actions{
+                padding:10px 20px 30px 20px !important;
+                ul{
+                    li{
+                        i,a{
+                            width:55px !important;
+                            height: 55px !important;
+                            border-radius: 50% !important;
+                            line-height: 51px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width:550px){
+    ab-profile-edit{
+        .edit-content{
+            .form-container{
+                .form-control{
+                    input[type="text"]{
+
+                        padding:8px !important;   
+                        margin:0px !important;    
+                        width:90% !important;     
+
+                    }
+                    .browse-photo{
+
+                        text-align:right !important;
+                    }
+                }
+            }
+            .edit-actions{
+                padding:10px 20px 30px 20px !important;
+                ul{
+                    li{
+                        i,a{
+                            width:55px !important;
+                            height: 55px !important;
+                            border-radius: 50% !important;
+                            line-height: 51px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

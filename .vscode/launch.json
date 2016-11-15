@@ -23,7 +23,7 @@
             "name": "Attach Chrome debug",
             "port": 9222,
             "sourceMaps": true,
-            "url": "http://localhost:8001/#/"
+            "url": "http://localhost:8001/#/main/profile/edit"
             
         }
     ]
