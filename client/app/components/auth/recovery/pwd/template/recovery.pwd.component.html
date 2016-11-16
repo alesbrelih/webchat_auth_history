@@ -1,0 +1,12 @@
+<div class="recover-wrapper hide">
+    <div class="header">
+    Recover Password
+    </div>
+    <form novalidate name="recoverPwdForm" ng-submit="vm.setPassword()">
+        <input type="password" required placeholder="Password" ng-model="vm.pwd.new" />
+        <input type="password" required placeholder="Confirm Password" ab-pwd-match="vm.pwd.new" ng-model="vm.pwd.confirm"/> 
+        <input id="submit-recover-pwd" ng-disabled="recoverPwdForm.$invalid" type="submit" hidden>
+    </form>
+    
+    <label for="submit-recover-pwd" class="submit blue only"  ng-class="{disabled:recoverPwdForm.$invalid}">Set Password</label>
+</div>

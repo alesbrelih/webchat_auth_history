@@ -12,6 +12,8 @@ function recoveryComponentModule(app){
         //method on form submit that calls RecoverAcc in AuthService
         vm.recoverAccount = ()=>{
             AuthService.RecoverAccount(vm.email);
+            vm.email="";
+            
         };
 
 

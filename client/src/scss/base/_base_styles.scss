@@ -38,12 +38,26 @@
     }
 }
 
+
 .base-rounded-img-btn-smaller{
     @extend .base-rounded-img-btn;
     width:50px;
     height:50px;
     line-height: 46px;
     font-size:1.3em;
+}
+
+@media(max-width:550px){
+    .base-rounded-img-btn{
+        width:50px;
+        height:50px;
+        line-height: 46px;
+    }
+    .base-rounded-img-btn-smaller{
+        width:40px;
+        height:40px;
+        line-height: 36px;
+    }
 }
 
 
@@ -68,9 +82,11 @@
     &[type="text"],&[type="password"],&[type="email"]{
         border:2px solid lighten($blue-default,10%);
         &:not(:focus).ng-not-empty.ng-touched.ng-invalid{
+            
             background-color:$red-light;
             color:white; 
             border-color:$red-default;
+            
         }
         
     }

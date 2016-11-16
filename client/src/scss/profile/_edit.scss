@@ -220,33 +220,7 @@ ab-profile-edit{
         }
     }
 }
-@media(max-width:550px){
-    ab-profile-edit{
-        .edit-content{
-            .form-container{
-                .form-control{
-                    input[type="text"]{
 
-                        padding:8px !important;                       
-                    }
-                }
-            }
-            .edit-actions{
-                padding:10px 20px 30px 20px !important;
-                ul{
-                    li{
-                        i,a{
-                            width:55px !important;
-                            height: 55px !important;
-                            border-radius: 50% !important;
-                            line-height: 51px !important;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 @media(max-width:550px){
     ab-profile-edit{
         .edit-content{
@@ -267,16 +241,7 @@ ab-profile-edit{
             }
             .edit-actions{
                 padding:10px 20px 30px 20px !important;
-                ul{
-                    li{
-                        i,a{
-                            width:55px !important;
-                            height: 55px !important;
-                            border-radius: 50% !important;
-                            line-height: 51px !important;
-                        }
-                    }
-                }
+               
             }
         }
     }

@@ -22,7 +22,10 @@ function useComponents(app){
     //recover account component
     const recoverComponent = require("./auth/recovery/recovery.component");
     recoverComponent(app);
-
+     
+    //recover account pwd component
+    const recoverPwdComponent = require("./auth/recovery/pwd/recovery.pwd.component");
+    recoverPwdComponent(app);
 
     //////////////////////////////////
     // ---- main window components ---
@@ -47,6 +50,10 @@ function useComponents(app){
     //profile edit component
     const profileEditComponent = require("./main/profile/edit/profile.edit.component");
     profileEditComponent(app);
+
+    //profile pwd change
+    const profilePwdComponent = require("./main/profile/pwd/profile.pwd.component");
+    profilePwdComponent(app);
 
 
 

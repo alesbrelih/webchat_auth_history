@@ -15,17 +15,25 @@ function angularStateConfig(app){
                 abstract:true,
                 template:"<auth-view></auth-view>"
             })
+            //login
             .state("auth.login",{
                 url:"/login",
                 template:"<login-view></login-view>"
             })
+            //register
             .state("auth.register",{
                 url:"/register",
                 template:"<register-view></register-view>"
             })
+            //auth recovery for user that forgot pwd
             .state("auth.recovery",{
                 url:"/recovery",
                 template:"<recovery-view></recovery-view>"
+            })
+            //recovery redirect from server with JWT as param
+            .state("auth.recoverpwd",{
+                url:"/recoverpwd/:jwt",
+                template:"<recovery-pwd-view></recovery-pwd-view>",
             })
             //main wrapper for main content
             .state("main",{

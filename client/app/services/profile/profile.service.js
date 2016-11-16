@@ -18,7 +18,8 @@ function profileServiceModule(app){
 
         };
 
-        //function
+        // function that creates form data for multiform contenttype
+        // from profile object
         function createFormData(profile){
             var fd = new FormData();
             for(let prop in profile){
@@ -27,11 +28,8 @@ function profileServiceModule(app){
                     fd.append(prop,profile[prop]);
                 }
             }
-
             return fd;
         }
-
-
 
         //methods
         profileService.Profile = profile;
@@ -83,10 +81,14 @@ function profileServiceModule(app){
             );
         };
 
+        //changes password
+        profileService.ChangePassword = (pwd)=>{
 
-
-
-
+            //calls auth service change password
+            //for consistency all loging/registering goes to 
+            //auth service
+           AuthService.ChangePassword(pwd);
+        };
 
         return profileService;
     }

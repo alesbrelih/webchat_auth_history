@@ -4,7 +4,7 @@
 
 function httpInterceptorFunction(app){
 
-    function httpInterceptorController($q,JwtService,$rootScope,AppConfig){
+    function httpInterceptorController($q,JwtService,$rootScope){
 
         return {
             //add token to header on every request
@@ -32,7 +32,7 @@ function httpInterceptorFunction(app){
 
     }
 
-    httpInterceptorController.$inject = ["$q","JwtService","$rootScope","AppConfig"];
+    httpInterceptorController.$inject = ["$q","JwtService","$rootScope"];
 
     app.factory("HttpInterceptor",httpInterceptorController);
 

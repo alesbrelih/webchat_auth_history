@@ -4,7 +4,7 @@
 
 function authorizeRouteFunction(app){
 
-    function authorizeRoute($rootScope,AuthService,$state,ToasterService){
+    function authorizeRoute($rootScope,AuthService,$state,ToasterService,JwtService){
 
         //on change state check if user is logged and redirect to login if it isnt
         $rootScope.$on("$stateChangeStart",function(event,toState,toParams,fromState,fromParams,options){
@@ -14,6 +14,13 @@ function authorizeRouteFunction(app){
 
                 $state.go("auth.login"); //go to login
             }
+
+            //remove token once redirecting from auth recover pwd
+            //so user has to relog once pwd changed
+            if(fromState.name === "auth.recoverpwd"){
+                JwtService.RemoveToken();
+            }
+            
             if(toState.name.startsWith("auth")  && AuthService.IsAuthorized()){
                 //if token exists prevent default state change
                 event.preventDefault();
@@ -29,6 +36,21 @@ function authorizeRouteFunction(app){
                 );
 
             }
+            //when accessing auth recovery need to verify token for possible injection
+            if(toState.name === "auth.recoverpwd"){
+
+                JwtService.SaveToken(toParams.jwt);
+                AuthService.ValidateJwt().then(function(){
+                    //jwt valid so we let it access
+
+                },function(){
+                    //jwt injected
+                    $state.go("auth.login");
+
+                });
+
+            }
+            
         });
 
         //on authorized error return user to login page
@@ -38,7 +60,7 @@ function authorizeRouteFunction(app){
         
         
     }
-    authorizeRoute.$inject=["$rootScope","AuthService","$state","ToasterService"];
+    authorizeRoute.$inject=["$rootScope","AuthService","$state","ToasterService","JwtService"];
 
     //set this on ap run
     app.run(authorizeRoute);

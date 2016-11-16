@@ -1,0 +1,20 @@
+<div class="pwd-change-wrapper">
+    <div class="title">
+        Change password
+    </div>
+    <div class="form-container">
+        <form novalidate name="pwdForm" ng-submit="vm.changePwd()">
+            <input type="password" required placeholder="Password" ng-model="vm.pwd.current">
+            <input type="password" required placeholder="New Password" ng-model="vm.pwd.new">
+            <input type="password" required placeholder="Confirm New Password" ab-pwd-match="vm.pwd.new" ng-model="vm.pwd.confirm">
+            <input id="pwd-submit" ng-disabled="pwdForm.$invalid" type="submit" hidden>
+        </form>
+    </div>
+    <div class="pwd-change-actions">
+        <ul>
+            <li><label for="pwd-submit"><i class="fa fa-check green" ng-class="{disable:pwdForm.$invalid}"></i></label></li>
+            <li><label ng-click="vm.resetForm()"><i class="fa fa-ban red"></i></label></li>
+            <li><a ui-sref="main.profile.view" class="fa fa-long-arrow-left"></a></li>
+        </ul>
+    </div>
+</div>

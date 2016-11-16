@@ -1,0 +1,78 @@
+ab-profile-pwd{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    .pwd-change-wrapper{
+        width:100%;
+        max-width:400px;
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+
+        border:2px solid $blue-default;
+        border-radius:5px;
+
+
+        .title{
+            @extend .base-profile-component-title;
+            border-radius:0px;
+
+        }
+        .form-container{
+            width:100%;  
+            padding-top:10px;
+
+            form{          
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+            }
+            input[type="password"]{
+                @extend .base-text-input;
+                border-color:$gray-darker;
+                width:80%;
+                margin:20px 10px 0px 10px;
+
+                
+                &:focus{
+                    border-color:$blue-default;
+                }
+            }
+        }
+        .pwd-change-actions{
+            padding:40px 0 20px 0;
+            ul{
+                display:flex;
+
+                i,a{
+
+                    @extend .base-rounded-img-btn;
+
+                    &.red{
+
+                        background-color:$red-default;
+                        border-color: $red-default;
+
+                        &:hover{
+                            background-color:white;
+                            color:$red-default;
+                        }
+                    }
+                    &.green{
+
+                        background-color:$green-default;
+                        border-color: $green-default;
+                        &:hover{
+                            background-color:white;
+                            color:$green-default;
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+
+}

@@ -53,10 +53,12 @@ app.use("/register",express.static(path.join(__dirname,"client/app/components/au
 app.use("/toaster",express.static(path.join(__dirname,"client/app/components/toaster/template")));
 app.use("/toaster-message",express.static(path.join(__dirname,"client/app/components/toaster/toaster-message/template")));
 app.use("/recovery",express.static(path.join(__dirname,"client/app/components/auth/recovery/template")));
+app.use("/recovery-pwd",express.static(path.join(__dirname,"client/app/components/auth/recovery/pwd/template")));
 app.use("/main",express.static(path.join(__dirname,"client/app/components/main/template")));
 app.use("/profile",express.static(path.join(__dirname,"client/app/components/main/profile/template")));
 app.use("/profile-view",express.static(path.join(__dirname,"client/app/components/main/profile/view/template")));
 app.use("/profile-edit",express.static(path.join(__dirname,"client/app/components/main/profile/edit/template")));
+app.use("/profile-pwd",express.static(path.join(__dirname,"client/app/components/main/profile/pwd/template")));
 app.use("/img",express.static(path.join(__dirname,"img")));
 
 
@@ -95,7 +97,7 @@ app.get("/validate/:jwt",(req,res)=>{
             res.status(401).send("Unauthorized");
         }
         else{
-            res.redirect("/#/recover/"+decoded);
+            res.redirect("/#/recoverpwd/"+jwt_body);
         }
     });
 });

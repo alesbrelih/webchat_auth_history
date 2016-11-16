@@ -157,63 +157,174 @@ function usersApiRouter(express,passport){
         //save previous profile photo
         var previousPhoto = ".";
 
-        //readmultiform data
-        multiForm(req,res,function(err){
-            //err reading data
-            if(err){
-                res.status(400).send("Error reading data. Please check your data.");
-            }
-            else{
-                //data read
-                User.findById(req.body._id,function(err,user){
-                    //get user and give it new info
-                    user.name = req.body.name;
-                    user.surname = req.body.surname;
-                    user.country = req.body.country;
-                    previousPhoto += user.pictureUrl;
+            //readmultiform data
+            multiForm(req,res,function(err){
+                //err reading data
+                if(err){
+                    res.status(400).send("Error reading data. Please check your data.");
+                }
+                else{
+                    //data read
+                    User.findById(req.body._id,function(err,user){
+                        //get user and give it new info
+                        user.name = req.body.name;
+                        user.surname = req.body.surname;
+                        user.country = req.body.country;
+                        previousPhoto += user.pictureUrl;
 
-                    //new file was saved and it exists
-                    if(req.file){
+                        //new file was saved and it exists
+                        if(req.file){
 
-                        //save url to photo
-                        user.pictureUrl = "/img/"+req.file.filename;
+                            //save url to photo
+                            user.pictureUrl = "/img/"+req.file.filename;
 
+                        }
+
+                        //save new profile data
+                        user.save(function(err){
+
+                            //err saving to db
+                            if(err){
+                                res.status(400).send("Error saving information to database. Please try later.");
+                            }
+                            else{
+
+                                //delete previous picture
+                                var previousImg = previousPhoto;
+
+                                //if its not default profile pic
+                                if(previousImg != "./img/no-profile-pic.jpg")
+                                {   
+                                    //remove pic
+                                    fs.unlink(previousImg,function(err){
+                                        if(err){
+                                            console.error("Error deleting file from server");
+                                        }                              
+                                    });
+                                }
+                                
+                                //profile was updated
+                                res.status(200).send("User updated");
+                            }
+                        });
+
+                    });
+                }
+            });
+            
+    });
+    
+    //change password route
+
+    router.post("/changepassword",passport.authenticate("jwt",{session:false}),function(req,res){
+        
+        //new pwd and confirm pwd do not match
+        if(req.body.new !== req.body.confirm){
+            res.status(400).send("Passwords do not match");
+        }
+        else{
+            //pwds match
+
+            User.getIdFromJwt(req.headers.token).then(function(result){
+                //find user by id
+                User.findById(result,function(err,user){
+
+                    if(err){
+                        //err with db
+                        res.status(400).send("Error connecting to DB");
                     }
-
-                    //save new profile data
-                    user.save(function(err,updatedUser){
-
-                        //err saving to db
-                        if(err){
-                            res.status(400).send("Error saving information to database. Please try later.");
+                    else{
+                        //no user matches criteria
+                        if(!user){
+                            res.status(400).send("Error searching for user information in DB");
                         }
                         else{
+                            //verify that current pwd matches one in db
+                            if(user.verifyPassword(req.body.current))
+                            {
+                                //hash pwd
+                                user.setPassword(req.body.confirm);
 
-                            //delete previous picture
-                            var previousImg = previousPhoto;
+                                //save to db
+                                user.save(function(err){
 
-                            //if its not default profile pic
-                            if(previousImg != "./img/no-profile-pic.jpg")
-                            {   
-                                //remove pic
-                                fs.unlink(previousImg,function(err){
                                     if(err){
-                                        console.error("Error deleting file from server");
-                                    }                              
+                                        res.status(400).send("Error saving new password");
+                                    }
+                                    else{
+                                        res.status(200).send("Password successfuly changed.");
+                                    }
+
                                 });
                             }
+                            else{
+
+                                //invalid current pwd
+                                res.status(400).send("Invalid current password.");
+
+                            }
+
                             
-                            //profile was updated
-                            res.status(200).send("User updated");
                         }
-                    });
+                    }
 
                 });
-            }
-        });
-            
-        });
 
+
+            });
+
+            
+        }
+    });
+    
+    //recover password route
+    router.post("/recoverpassword",passport.authenticate("jwt",{session:false}),function(req,res){
+        //check for form validation failure
+        if(req.body.new !== req.body.confirm){
+            res.status(400).send("Passwords do not match!");
+        }
+        else{
+            User.getIdFromJwt(req.headers.token).then(function(id){
+
+                //get user from id
+                User.findById(id,function(err,user){
+
+                    if(err){
+                        res.status(400).send("Error connecting to database");
+                    }
+                    else{
+                        //bad id
+                        if(!user){
+                            res.status(400).send("Error getting user information from database.")
+                        }
+                        else{
+                            //user found
+                            user.setPassword(req.body.new);
+                            
+                            //save pwd
+                            user.save(function(err){
+                                if(err)
+                                {
+                                    res.status(400).send("Error saving new password");
+                                }
+                                else{
+                                    res.status(200).send("Password successfuly saved.")
+                                }
+                            });
+
+                        }   
+                    }
+
+                });
+
+            },function(){
+                //bad jwt token
+                res.status(401).send("Not authenticated.");
+            }); 
+        }
+    });
+    
+    
     //return router
     return router;
 }

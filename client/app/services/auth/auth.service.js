@@ -61,20 +61,20 @@ function authServiceFunction(app){
                 });
         };
         
-        //gets user info from DB
-        // authFactory.GetProfileInfo=()=>{
-        //     $http.get(`${url}/api/users/profile`)
-        //         .then(function(success){
+        //changes password 
+        authFactory.ChangePassword = (pwd) =>{
+             $http.post(`${url}/api/users/changepassword`,pwd)
+                .then(function(){
 
-        //             currentUser.email=success.data.email;
+                    //show toaster and redirect
+                    ToasterService.Add("success","Password successfully changed");
+                    $state.go("main.profile.view");
+                },function(err){
 
-        //         },function(err){
-
-        //             ToasterService.Add("warning",err.data);
-        //             $state.go("home");
-
-        //         });
-        // };
+                    //show err on err
+                    ToasterService.Add("warning",err.data);
+                });
+        };
 
         //checks if user already authorized
         authFactory.IsAuthorized=()=>{
@@ -94,13 +94,27 @@ function authServiceFunction(app){
                 });
         };
 
-        //TODO: authfactory.ProfileInfo AND make localhost address saved in angular constants
-
+    
         //validates jwt
         authFactory.ValidateJwt=()=>{
 
             return $http.get(`${url}/api/users/validate`);
 
+        };
+
+        //method to recover lost pwd
+        authFactory.RecoverPassword = (pwd)=>{
+            //set pwd
+            $http.post(`${url}/api/users/recoverpassword`,pwd)
+                    //go to auth login if success, $stateChange will remove token automatically
+                    .then(function(){
+                        ToasterService.Add("success","Password successfully changed.");
+                        $state.go("auth.login");
+                    },
+                    function(err){
+                        //show err
+                        ToasterService.Add("warning",err);
+                    });
         };
         
         //current profile
