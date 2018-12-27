@@ -46,6 +46,7 @@ app.use(body_parser.json());
 // ----- Static folder for CSS/JS/FONT ----
 ///////////////////////////////////////////
 
+
 app.use(express.static(path.join(__dirname,"public")));
 app.use("/auth",express.static(path.join(__dirname,"client/app/components/auth/template")));
 app.use("/login",express.static(path.join(__dirname,"client/app/components/auth/login/template")));

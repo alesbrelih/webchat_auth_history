@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////
-// ------- dependencies for karma testing ----- 
+// ------- dependencies for karma testing -----
 ////////////////////////////////////////////////
 const angular = require("angular");  //need to pass angular reference
 require("angular-mocks");
